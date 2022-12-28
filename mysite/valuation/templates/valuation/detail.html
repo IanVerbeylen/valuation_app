@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>{{portfolio}}</h1>
+    <ul>
+    {% for company in portfolio.company_set.all %}
+        <li> {{ company.company_name }} </li>
+    {% endfor %}
+    </ul>
+
+    <form action="{% url 'portfolio:buy_shares' portfolio.id %}" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend>
+                <h1>{{ portfolio.portfolio_name }}</h1>
+            </legend>
+            {% if error_message %} 
+                <p><strong> {{ error_message }}</strong></p>
+            {% endif %}
+            {% for company in portfolio.company_set.all %}
+                <input type="radio" name="company" id="company{{forloop.counter}}" value="{{company.id}}">
+                <label for="company{{forloop.counter}}">{{ company.company_name }}</label><br>
+            {% endfor %}
+        </fieldset>
+        <input type="submit" value="Buy">
+    </form>
+</body>
+</html>
