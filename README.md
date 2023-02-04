@@ -1,9 +1,8 @@
-# Basic discounted free cashflow to the firm valuation model
+# Basic DCF valuation model in Python and introductory learning about Django framework
 
-A simplified discounted cashflow to the firm model, based on Yahoo Finance API.
-Goal was learning about:
-- Yahoo Finance API in Python
+Goal was to "learn by practice" about the following topics:
 - Financial modeling in Python
+- Yahoo Finance API, and financial web-based API's in general
 - Django web framework:
   - Django's database
   - Dataflow in Django
